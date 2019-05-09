@@ -21,7 +21,7 @@ const Button = styled.button`
 const Form = styled.form`
   text-align: center;
 `;
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,12 +38,12 @@ class Login extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    const endpoint = "http://localhost:5000/api/auth/login";
+    const endpoint = "http://localhost:5000/api/auth/Register";
     axios
       .post(endpoint, this.state)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
-        this.props.history.push("/users");
+        this.props.history.push("/login");
       })
       .catch(err => {
         console.error("Login error", err);
@@ -73,7 +73,7 @@ class Login extends Component {
             />
           </div>
           <div>
-            <Button type="submit">Log In</Button>
+            <Button type="submit">Register</Button>
           </div>
         </Form>
       </>
@@ -81,4 +81,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
